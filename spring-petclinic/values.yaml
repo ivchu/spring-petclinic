@@ -1,0 +1,10 @@
+petclinic:
+  server:
+    port: 8081
+  image: spring-petclinic
+  configmap:
+    name: petclinic-configmap
+    application:
+      properties:
+        name: application.yml
+  label: petclinic

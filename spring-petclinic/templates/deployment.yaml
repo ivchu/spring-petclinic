@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment-{{ .Chart.AppVersion }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.petclinic.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.petclinic.label }}
+    spec:
+      containers:
+        - name: petclinic
+          image: {{ .Values.petclinic.image }}
+          imagePullPolicy: Never
+          ports:
+            - containerPort: {{ .Values.petclinic.server.port }}
+              name: "http"
+          volumeMounts:
+            - name: app-config
+              mountPath: /application.yml
+              subPath: {{ .Values.petclinic.configmap.application.properties.name }}
+              readOnly: true
+      volumes:
+        - name: app-config
+          configMap:
+            name: {{ .Values.petclinic.configmap.name }}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: petclinic-service
+spec:
+  selector:
+    app: {{ .Values.petclinic.label }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.petclinic.server.port }}
+      targetPort: {{ .Values.petclinic.server.port }}
+  type: NodePort
