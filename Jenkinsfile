@@ -6,19 +6,18 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('Hello World') {
             steps {
                 script {
                     println 'Hello World, from task 1'
                 }
             }
         }
-        stage('Cloning Git') {
+        stage('Build app') {
             steps {
-                script {
-                    git url: 'https://github.com/ivchu/spring-petclinic.git', branch: 'main'
-                    println 'Git cloned'
-                }
+                git url: 'https://github.com/ivchu/spring-petclinic.git', branch: 'main'
+                echo 'Git cloned'
+                sh './mvnw clean install'
             }
         }
         stage('Building image') {
