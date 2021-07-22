@@ -16,7 +16,7 @@ pipeline {
         stage('Cloning Git') {
             steps {
                 script {
-                    git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
+                    git url: 'https://github.com/ivchu/spring-petclinic.git', branch: 'main'
                     println 'Git cloned'
                 }
             }
