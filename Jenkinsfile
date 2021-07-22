@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'Hello World, from task 1'
-                def petclinic = docker.build "ivchu/petclinic:${env.BUILD_TAG}"
+                script {
+                    echo 'Hello World, from task 1'
+                    def petclinic = docker.build "ivchu/petclinic:${env.BUILD_TAG}"
+                }
             }
         }
     }
