@@ -34,7 +34,7 @@ pipeline {
                 script {
                     println 'Pushing docker image'
                     docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
+                        petclinic.push()
                     }
                     println 'Docker image pushed'
                 }
