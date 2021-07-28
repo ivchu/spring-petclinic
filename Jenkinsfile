@@ -1,3 +1,4 @@
+def petclinic
 pipeline {
     environment {
         registry = "ivchu/petclinic"
@@ -24,7 +25,7 @@ pipeline {
             steps {
                 script {
                     println 'Building docker image'
-                    def petclinic = docker.build(registry + ":$BUILD_NUMBER")
+                    petclinic = docker.build(registry + ":$BUILD_NUMBER")
                     println 'Docker image built'
                 }
             }
